@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AllAITools - The Ultimate 100+ Global AI Directory & Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#050507',
+                        darkCard: '#0e0e12',
+                        darkCardHover: '#16161c',
+                        darkBorder: '#22222d',
+                        brandPurple: '#8b5cf6',
+                        brandIndigo: '#6366f1',
+                        brandCyan: '#06b6d4',
+                    },
+                    boxShadow: {
+                        'neon': '0 0 25px -5px rgba(139, 92, 246, 0.25)',
+                        'glow': '0 0 50px -10px rgba(99, 102, 241, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #050507; color: #f4f4f5; }
+        .hero-glow {
+            background: radial-gradient(circle at 50% -20%, rgba(139, 92, 246, 0.22) 0%, rgba(99, 102, 241, 0.1) 40%, transparent 70%);
+        }
+        .glass-panel {
+            background: rgba(14, 14, 18, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #050507; }
+        ::-webkit-scrollbar-thumb { background: #22222d; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-purple-500 selection:text-white">
+
+    <header class="sticky top-0 z-40 glass-panel border-b border-darkBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-3">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-cyan-400 flex items-center justify-center shadow-neon">
+                    <i class="fa-solid fa-sparkles text-white text-base"></i>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-zinc-200 to-purple-400 bg-clip-text text-transparent">AllAITools</span>
+                        
+                    </div>
+                    <span class="hidden sm:inline-block text-[10px] text-zinc-400">100+ Mega Directory</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                
+                <button onclick="openSponsorModal()" class="hidden md:inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-darkCard border border-darkBorder hover:border-purple-500/50 text-zinc-300 hover:text-white text-xs font-semibold transition">
+                    <i class="fa-solid fa-bullhorn text-purple-400"></i>
+                    <span>Sponsor Tool</span>
+                </button>
+                <button onclick="openSubmitModal()" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold text-xs transition shadow-neon active:scale-95">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                    <span>Submit Tool</span>
+                </button>
+                <button onclick="toggleBookmarksFilter()" id="bookmarkNavBtn" class="relative p-2.5 rounded-xl bg-darkCard border border-darkBorder hover:border-purple-500/50 text-zinc-400 hover:text-white transition" title="Saved Bookmarks">
+                    <i class="fa-solid fa-bookmark text-sm"></i>
+                    <span id="bookmarkCountBadge" class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-purple-600 text-white text-[10px] flex items-center justify-center font-bold hidden shadow-lg">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative pt-16 pb-10 px-4 sm:px-6 lg:px-8 hero-glow border-b border-darkBorder/60">
+        <div class="max-w-4xl mx-auto text-center space-y-6">
+            
+
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                Explore Everything in <span class="bg-gradient-to-r from-purple-400 via-indigo-300 to-cyan-400 bg-clip-text text-transparent">Artificial Intelligence</span>
+            </h1>
+            
+            <p class="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto font-normal leading-relaxed">
+                The massive global index for 100% verified, secure, and state-of-the-art AI apps, full-stack builders, neural networks, agents, and automation workflows.
+            </p>
+            
+            <div class="relative max-w-2xl mx-auto mt-8">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-zinc-400">
+                    <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                </div>
+                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search through 100+ verified AI tools (e.g. manus, bolt, cursor, video)..." class="w-full pl-11 pr-24 py-4 bg-darkCard border border-darkBorder rounded-2xl text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition text-sm sm:text-base shadow-2xl">
+                <div class="absolute inset-y-0 right-2 flex items-center space-x-2">
+                    <span id="resultCount" class="text-xs text-zinc-400 font-medium px-2.5 py-1 rounded-xl bg-darkBorder/70 border border-darkBorder">100+ tools</span>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center flex-wrap gap-2 pt-2">
+                <span class="text-xs text-zinc-500 font-semibold mr-1">Trending:</span>
+                <button onclick="quickSearch('manus')" class="text-xs px-3 py-1 rounded-lg bg-darkCard hover:bg-darkCardHover border border-darkBorder text-zinc-300 hover:text-white transition">#ManusAI</button>
+                <button onclick="quickSearch('bolt.new')" class="text-xs px-3 py-1 rounded-lg bg-darkCard hover:bg-darkCardHover border border-darkBorder text-zinc-300 hover:text-white transition">#bolt.new</button>
+                <button onclick="quickSearch('deepseek')" class="text-xs px-3 py-1 rounded-lg bg-darkCard hover:bg-darkCardHover border border-darkBorder text-zinc-300 hover:text-white transition">#DeepSeek</button>
+                <button onclick="quickSearch('Cursor')" class="text-xs px-3 py-1 rounded-lg bg-darkCard hover:bg-darkCardHover border border-darkBorder text-zinc-300 hover:text-white transition">#Cursor</button>
+                <button onclick="quickSearch('Free')" class="text-xs px-3 py-1 rounded-lg bg-darkCard hover:bg-darkCardHover border border-darkBorder text-zinc-300 hover:text-white transition">#100%Free</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <div class="space-y-4 mb-8">
+            <div class="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none" id="categoryPills"></div>
+            <div class="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none" id="subCategoryPills"></div>
+
+            <div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-darkBorder/60">
+                <div class="flex flex-wrap items-center gap-2" id="pricingFilters">
+                    <span class="text-xs font-semibold text-zinc-500 uppercase tracking-wider mr-1">Pricing:</span>
+                    <button onclick="setPricingFilter('All')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-600 text-white transition filter-pricing active shadow-sm" data-pricing="All">All</button>
+                    <button onclick="setPricingFilter('Free')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-darkCard border border-darkBorder text-zinc-400 hover:text-white transition filter-pricing" data-pricing="Free">Free</button>
+                    <button onclick="setPricingFilter('Freemium')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-darkCard border border-darkBorder text-zinc-400 hover:text-white transition filter-pricing" data-pricing="Freemium">Freemium</button>
+                    <button onclick="setPricingFilter('Paid')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-darkCard border border-darkBorder text-zinc-400 hover:text-white transition filter-pricing" data-pricing="Paid">Paid</button>
+                    <button onclick="setPricingFilter('Open-Source')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-darkCard border border-darkBorder text-zinc-400 hover:text-white transition filter-pricing" data-pricing="Open-Source">Open-Source</button>
+                </div>
+
+                <div class="flex items-center space-x-2">
+                    <span class="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Sort by:</span>
+                    <select id="sortBy" onchange="renderTools()" class="bg-darkCard border border-darkBorder rounded-xl px-3.5 py-2 text-xs font-medium text-zinc-300 focus:outline-none focus:border-purple-500 cursor-pointer">
+                        <option value="popular">Most Popular</option>
+                        <option value="newest">Newest First</option>
+                        <option value="rating">Highest Rated</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="toolsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+        <div id="emptyState" class="hidden text-center py-20">
+            <div class="w-16 h-16 bg-darkCard border border-darkBorder rounded-2xl flex items-center justify-center mx-auto mb-4 text-zinc-500 text-2xl shadow-xl">
+                <i class="fa-solid fa-ghost"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">No AI tools found</h3>
+            <p class="text-zinc-400 text-sm mt-1">Try searching with different keywords or reset your category/pricing filters.</p>
+            <button onclick="resetFilters()" class="mt-4 px-4 py-2 rounded-xl bg-purple-600 text-white text-xs font-semibold hover:bg-purple-500 transition shadow-neon">Reset All Filters</button>
+        </div>
+
+    </main>
+
+    <div id="toolModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-darkCard border border-darkBorder rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative animate-in fade-in zoom-in duration-200" id="modalContent"></div>
+    </div>
+
+    <div id="submitModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-darkCard border border-darkBorder rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Submit AI Tool</h3>
+                        <p class="text-xs text-zinc-400">Add your tool to the global directory.</p>
+                    </div>
+                </div>
+                <button onclick="closeSubmitModal()" class="text-zinc-400 hover:text-white p-2 rounded-xl bg-darkBg border border-darkBorder">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form id="submitForm" onsubmit="handleToolSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-400 uppercase mb-1.5">Tool Name</label>
+                    <input type="text" id="subName" required placeholder="e.g. Synthetix AI" class="w-full px-3.5 py-3 bg-darkBg border border-darkBorder rounded-xl text-white text-sm focus:outline-none focus:border-purple-500">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-zinc-400 uppercase mb-1.5">Category</label>
+                        <select id="subCategory" class="w-full px-3.5 py-3 bg-darkBg border border-darkBorder rounded-xl text-white text-sm focus:outline-none focus:border-purple-500">
+                            <option value="Video & Animation">Video & Animation</option>
+                            <option value="Images & Art">Images & Art</option>
+                            <option value="Audio & Voice">Audio & Voice</option>
+                            <option value="Text & Copywriting">Text & Copywriting</option>
+                            <option value="Productivity & Code">Productivity & Code</option>
+                            <option value="Marketing & Social">Marketing & Social</option>
+                            <option value="Specialized & Agents">Specialized & Agents</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-zinc-400 uppercase mb-1.5">Pricing Model</label>
+                        <select id="subPricing" class="w-full px-3.5 py-3 bg-darkBg border border-darkBorder rounded-xl text-white text-sm focus:outline-none focus:border-purple-500">
+                            <option value="Free">Free</option>
+                            <option value="Freemium">Freemium</option>
+                            <option value="Paid">Paid</option>
+                            <option value="Open-Source">Open-Source</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-400 uppercase mb-1.5">Official Website URL / Affiliate Link</label>
+                    <input type="url" id="subUrl" required placeholder="https://example.com" class="w-full px-3.5 py-3 bg-darkBg border border-darkBorder rounded-xl text-white text-sm focus:outline-none focus:border-purple-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-400 uppercase mb-1.5">Short Tagline</label>
+                    <textarea id="subDesc" required rows="2" placeholder="What makes this tool unique in 1 sentence?" class="w-full px-3.5 py-3 bg-darkBg border border-darkBorder rounded-xl text-white text-sm focus:outline-none focus:border-purple-500"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-400 uppercase mb-1.5">Icon / Emoji</label>
+                    <input type="text" id="subIcon" required maxlength="4" placeholder="🤖" class="w-full px-3.5 py-3 bg-darkBg border border-darkBorder rounded-xl text-white text-sm focus:outline-none focus:border-purple-500">
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold text-sm transition shadow-neon">
+                    Submit to Directory
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="sponsorModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-darkCard border border-darkBorder rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative text-center">
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 mx-auto mb-4 text-xl">
+                <i class="fa-solid fa-crown"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Sponsor AllAITools</h3>
+            <p class="text-xs text-zinc-400 mt-2 leading-relaxed">
+                Put your AI tool in front of thousands of high-intent tech founders, developers, and creators every single day.
+            </p>
+            <div class="my-6 p-4 bg-darkBg border border-darkBorder rounded-2xl text-left space-y-2">
+                <div class="flex items-center justify-between text-xs text-zinc-300">
+                    <span>⚡ Top Banner Spotlight</span>
+                    <span class="font-bold text-white">$149 / week</span>
+                </div>
+                <div class="flex items-center justify-between text-xs text-zinc-300">
+                    <span>🔥 Pinned Top Grid Listing</span>
+                    <span class="font-bold text-white">$99 / week</span>
+                </div>
+            </div>
+            <div class="flex space-x-3">
+                <button onclick="closeSponsorModal()" class="flex-1 py-3 rounded-xl bg-darkBg border border-darkBorder text-zinc-300 font-semibold text-xs hover:text-white transition">Cancel</button>
+                <button onclick="handleSponsorInquiry()" class="flex-1 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs transition shadow-neon">Contact Team</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-darkCard border border-darkBorder px-4 py-3.5 rounded-2xl shadow-2xl flex items-center space-x-3 transform translate-y-28 opacity-0 transition-all duration-300">
+        <div id="toastIcon" class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div>
+            <p id="toastTitle" class="text-xs font-bold text-white">Success!</p>
+            <p id="toastMsg" class="text-[11px] text-zinc-400">Action completed successfully.</p>
+        </div>
+    </div>
+
+    <footer class="border-t border-darkBorder py-8 mt-12 bg-darkCard/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 space-y-4 sm:space-y-0">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-zinc-300">AllAITools.com</span>
+                <span>— The Global AI Intelligence Hub (100+ Verified Secure Tools).</span>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="#" onclick="openSponsorModal(); return false;" class="hover:text-zinc-300 transition">Sponsorships</a>
+                <a href="#" onclick="openSubmitModal(); return false;" class="hover:text-zinc-300 transition">Submit Tool</a>
+                <a href="#" class="hover:text-zinc-300 transition">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const defaultTools = [
+            // Featured & Agentic Giants
+            { id: 1, name: "Manus AI", tagline: "The revolutionary general-purpose autonomous AI agent that performs complex multi-step workflows.", category: "Specialized & Agents", subCategory: "AI Agents", pricing: "Free", rating: 5.0, reviews: 4120, url: "https://manus.im", icon: "🦾", badge: "Top Agent", verified: true, platform: "Web App", features: ["Autonomous multi-step execution", "Deep browser interaction", "Data analysis & coding", "Zero-setup agentic flows"] },
+            { id: 2, name: "Bolt.new", tagline: "Prompt, run, edit, and deploy full-stack web apps entirely in your browser.", category: "Productivity & Code", subCategory: "Coding Assistants", pricing: "Freemium", rating: 4.9, reviews: 3450, url: "https://bolt.new", icon: "⚡", badge: "Featured", verified: true, platform: "Web App", features: ["Full WebContainer execution", "Node.js & React support", "Instant deployment", "Terminal access"] },
+            { id: 3, name: "Lovable.dev", tagline: "Full-stack web application generator with instant preview and Supabase backend integration.", category: "Productivity & Code", subCategory: "Coding Assistants", pricing: "Freemium", rating: 4.9, reviews: 2900, url: "https://lovable.dev", icon: "💖", badge: "New Gen", verified: true, platform: "Web App", features: ["Instant React generation", "Supabase DB sync", "Visual code editing", "Clean git exports"] },
+            { id: 4, name: "v0.dev", tagline: "Generative UI system by Vercel for instant React and Tailwind components.", category: "Productivity & Code", subCategory: "Coding Assistants", pricing: "Freemium", rating: 4.9, reviews: 3800, url: "https://v0.dev", icon: "▲", badge: "Vercel", verified: true, platform: "Web App", features: ["Tailwind CSS styling", "Prompt to UI components", "Interactive iterations", "Copy to codebase"] },
+            { id: 5, name: "DeepSeek-R1", tagline: "State-of-the-art open reasoning model rivaling proprietary frontier models for free.", category: "Text & Copywriting", subCategory: "Chatbots & LLMs", pricing: "Free", rating: 4.9, reviews: 5900, url: "https://deepseek.com", icon: "🐋", badge: "Free Reasoning", verified: true, platform: "Web & API", features: ["Advanced chain-of-thought", "Open weights available", "Exceptional math & coding", "Lightning fast inference"] },
+            { id: 6, name: "Cursor IDE", tagline: "The AI-first code editor built for maximum developer productivity and deep repo awareness.", category: "Productivity & Code", subCategory: "Coding Assistants", pricing: "Freemium", rating: 5.0, reviews: 6200, url: "https://cursor.com", icon: "🖱️", badge: "Best IDE", verified: true, platform: "Desktop App", features: ["Deep codebase indexing", "Composer multi-file editing", "GPT-4o & Claude 3.5 Sonnet", "Drop-in VS Code replacement"] },
+            { id: 7, name: "ChatGPT (OpenAI)", tagline: "The world's leading conversational AI assistant for writing, coding, and problem solving.", category: "Text & Copywriting", subCategory: "Chatbots & LLMs", pricing: "Freemium", rating: 4.9, reviews: 9800, url: "https://chatgpt.com", icon: "💬", badge: "Most Popular", verified: true, platform: "Web & App", features: ["Advanced data analysis", "Custom GPTs", "Voice conversations", "Web browsing integration"] },
+            { id: 8, name: "Claude (Anthropic)", tagline: "Advanced AI assistant with industry-leading reasoning, coding, and massive document context.", category: "Text & Copywriting", subCategory: "Chatbots & LLMs", pricing: "Freemium", rating: 4.9, reviews: 7400, url: "https://claude.ai", icon: "🧠", badge: "Top Reasoning", verified: true, platform: "Web App", features: ["Artifacts live preview", "Claude 3.5 Sonnet code gen", "200k+ context window", "Exceptional nuance"] },
+            { id: 9, name: "Perplexity AI", tagline: "Conversational AI search engine delivering accurate, cited answers from live web sources.", category: "Text & Copywriting", subCategory: "Summarizers", pricing: "Freemium", rating: 4.9, reviews: 5600, url: "https://perplexity.ai", icon: "🔍", badge: "Search Pro", verified: true, platform: "Web & Mobile", features: ["Real-time web search", "Precise academic citations", "Model switching", "File analysis"] },
+            { id: 10, name: "Hugging Face Chat", tagline: "Access top open-source LLMs like Llama 3, Mistral, and Qwen entirely for free.", category: "Text & Copywriting", subCategory: "Chatbots & LLMs", pricing: "Free", rating: 4.8, reviews: 3100, url: "https://huggingface.co/chat", icon: "🤗", badge: "100% Free", verified: true, platform: "Web App", features: ["Multiple model switching", "Web search capability", "File uploads", "Open-source privacy"] },
+
+            // Video & Animation (11 to 20)
+            { id: 11, name: "Luma Dream Machine", tagline: "Cinematic high-speed AI video generation from text and image prompts.", category: "Video & Animation", subCategory: "Text-to-Video", pricing: "Freemium", rating: 4.7, reviews: 2100, url: "https://lumalabs.ai/dream-machine", icon: "🌠", badge: "Cinematic", verified: true, platform: "Web App", features: ["Realistic camera motion", "Fast generation speed", "Image to video loops", "Keyframe guidance"] },
+            { id: 12, name: "Kling AI", tagline: "Advanced physics-accurate AI video generation studio.", category: "Video & Animation", subCategory: "Image-to-Video", pricing: "Free", rating: 4.7, reviews: 2200, url: "https://klingai.com", icon: "🎞️", badge: "Physics AI", verified: true, platform: "Web App", features: ["Real-world simulation", "Extended shots", "Cinematic lighting", "High-res export"] },
+            { id: 13, name: "Hailuo AI (MiniMax)", tagline: "Expressive high-definition video generation from simple text descriptions.", category: "Video & Animation", subCategory: "Text-to-Video", pricing: "Free", rating: 4.8, reviews: 1500, url: "https://hailuoai.video", icon: "📽", badge: "HD Video", verified: true, platform: "Web App", features: ["Cinematic expressions", "Rich motion fidelity", "Fast rendering queue", "No watermark options"] },
+            { id: 14, name: "Runway Gen-3 Alpha", tagline: "Next-generation video synthesis model built for creators and cinematic production.", category: "Video & Animation", subCategory: "Text-to-Video", pricing: "Freemium", rating: 4.9, reviews: 4500, url: "https://runwayml.com", icon: "🎬", badge: "Pro Studio", verified: true, platform: "Web App", features: ["Director control", "Advanced camera moves", "High fidelity motion", "Text & image prompts"] },
+            { id: 15, name: "Pika Labs", tagline: "Idea-to-video platform that lets you generate and edit animations with ease.", category: "Video & Animation", subCategory: "Video Editing", pricing: "Freemium", rating: 4.7, reviews: 2800, url: "https://pika.art", icon: "✨", badge: "Animation", verified: true, platform: "Web App", features: ["Lip sync audio", "Canvas expansion", "Sound effects generation", "Creative controls"] },
+            { id: 16, name: "HeyGen", tagline: "AI video generation platform for creating realistic talking avatar videos.", category: "Video & Animation", subCategory: "Avatar Generation", pricing: "Freemium", rating: 4.8, reviews: 3100, url: "https://heygen.com", icon: "🗣️", badge: "Avatars", verified: true, platform: "Web App", features: ["Instant avatar cloning", "Multi-language voice translation", "Realistic lip sync", "Enterprise templates"] },
+            { id: 17, name: "Synthesia", tagline: "Create professional AI videos from plain text with human presenters in minutes.", category: "Video & Animation", subCategory: "Avatar Generation", pricing: "Paid", rating: 4.8, reviews: 2900, url: "https://synthesia.io", icon: "👔", badge: "Corporate", verified: true, platform: "Web App", features: ["140+ diverse avatars", "Custom brand voices", "Screen recording integration", "SCORM compliant"] },
+            { id: 18, name: "Topaz Video AI", tagline: "Production-grade video upscaling, deinterlacing, and frame interpolation.", category: "Video & Animation", subCategory: "Upscaling", pricing: "Paid", rating: 4.9, reviews: 1800, url: "https://topazlabs.com/topaz-video-ai", icon: "🔍", badge: "Desktop Pro", verified: true, platform: "Desktop App", features: ["AI-powered enhancement", "Restore old footage", "Up to 8K resolution", "GPU hardware acceleration"] },
+            { id: 19, name: "Descript", tagline: "All-in-one video and podcast editing software that works like a word processor.", category: "Video & Animation", subCategory: "Video Editing", pricing: "Freemium", rating: 4.8, reviews: 3400, url: "https://descript.com", icon: "🎙", badge: "Editing", verified: true, platform: "Desktop & Web", features: ["Text-based video editing", "Studio sound enhancement", "Filler word removal", "AI green screen"] },
+            { id: 20, name: "CapCut AI", tagline: "Easy online video editor packed with AI auto-captions, effects, and scriptwriters.", category: "Video & Animation", subCategory: "Video Editing", pricing: "Free", rating: 4.7, reviews: 4900, url: "https://capcut.com", icon: "✂️", badge: "Free Editor", verified: true, platform: "Web & App", features: ["Auto captions generator", "Background removal", "AI script to video", "Trendy templates"] },
+
+            // Images & Art (21 to 30)
+            { id: 21, name: "Midjourney", tagline: "The premier AI art generator producing stunning photorealistic and artistic images.", category: "Images & Art", subCategory: "Text-to-Image", pricing: "Paid", rating: 5.0, reviews: 12400, url: "https://midjourney.com", icon: "🎨", badge: "Top Art", verified: true, platform: "Discord & Web", features: ["Unmatched aesthetic quality", "V6 hyper-realism", "Style reference controls", "Image blending"] },
+            { id: 22, name: "Stable Diffusion 3", tagline: "Open-weights state-of-the-art text-to-image model for ultimate local control.", category: "Images & Art", subCategory: "Text-to-Image", pricing: "Open-Source", rating: 4.9, reviews: 5100, url: "https://stability.ai", icon: "🌀", badge: "Open Source", verified: true, platform: "Local & API", features: ["Complete local ownership", "ControlNet support", "Inpainting & outpainting", "Commercial freedom"] },
+            { id: 23, name: "DALL-E 3 (OpenAI)", tagline: "Advanced image generation integrated directly into ChatGPT with precise text rendering.", category: "Images & Art", subCategory: "Text-to-Image", pricing: "Freemium", rating: 4.8, reviews: 6200, url: "https://openai.com/dall-e-3", icon: "🖼️", badge: "Integrated", verified: true, platform: "Web App", features: ["Excellent spelling & text in images", "Conversational editing", "Safety filters", "High detail"] },
+            { id: 24, name: "Magnific AI", tagline: "Supercharge, upscale, and add mind-blowing detail to images and art.", category: "Images & Art", subCategory: "Text-to-Image", pricing: "Paid", rating: 4.9, reviews: 1900, url: "https://magnific.ai", icon: "🔍", badge: "Pro Upscale", verified: true, platform: "Web App", features: ["AI hallucination sliders", "Up to 16x upscale resolution", "Texture enhancement", "Creative prompting"] },
+            { id: 25, name: "Recraft.ai", tagline: "Professional vector art, icons, 3D illustrations, and brand graphics generator.", category: "Images & Art", subCategory: "Text-to-Image", pricing: "Freemium", rating: 4.8, reviews: 1650, url: "https://recraft.ai", icon: "📐", badge: "Vectors", verified: true, platform: "Web App", features: ["SVG vector output", "Brand color consistency", "Infinite canvas", "Clean layer management"] },
+            { id: 26, name: "Fooocus", tagline: "Open-source offline image generator combining Midjourney ease with SD control.", category: "Images & Art", subCategory: "Text-to-Image", pricing: "Open-Source", rating: 4.9, reviews: 3100, url: "https://fooocus.ai", icon: "🌀", badge: "Open Source", verified: true, platform: "Desktop App", features: ["Zero prompt engineering required", "Anime and realistic styles", "Inpainting and outpainting", "Completely free & local"] },
+            { id: 27, name: "Adobe Firefly", tagline: "Commercial-safe generative AI built directly into Photoshop and Illustrator.", category: "Images & Art", subCategory: "Inpainting", pricing: "Freemium", rating: 4.8, reviews: 4100, url: "https://firefly.adobe.com", icon: "🔥", badge: "Adobe", verified: true, platform: "Web & App", features: ["Generative fill & expand", "Text to vector graphics", "Commercial indemnity", "Photoshop integration"] },
+            { id: 28, name: "Leonardo AI", tagline: "Game asset, concept art, and high-fidelity image generation studio.", category: "Images & Art", subCategory: "Text-to-Image", pricing: "Freemium", rating: 4.8, reviews: 3900, url: "https://leonardo.ai", icon: "🛡️", badge: "Game Dev", verified: true, platform: "Web App", features: ["Realtime canvas generation", "Custom model training", "Texture generation", "Generative upscale"] },
+            { id: 29, name: "Photoroom", tagline: "AI photo editor and background remover designed for e-commerce sellers.", category: "Images & Art", subCategory: "Background Remover", pricing: "Freemium", rating: 4.8, reviews: 4500, url: "https://photoroom.com", icon: "🛍️", badge: "E-Commerce", verified: true, platform: "Web & Mobile", features: ["Instant background removal", "AI product backdrops", "Batch processing", "Professional lighting"] },
+            { id: 30, name: "Krea AI", tagline: "Real-time AI painting, upscaling, and pattern generation for creatives.", category: "Images & Art", subCategory: "Text-to-Image", pricing: "Freemium", rating: 4.8, reviews: 2100, url: "https://krea.ai", icon: "🎨", badge: "Realtime", verified: true, platform: "Web App", features: ["Real-time canvas sketching", "AI texture generation", "High resolution enhancer", "Webcam AI input"] },
+
+            // Audio & Voice (31 to 40)
+            { id: 31, name: "Udio Music", tagline: "Professional-grade AI song and melody creation studio.", category: "Audio & Voice", subCategory: "AI Music Generation", pricing: "Freemium", rating: 4.8, reviews: 2500, url: "https://udio.com", icon: "🎸", badge: "Pro Audio", verified: true, platform: "Web App", features: ["Audio section inpainting", "Stem separation", "Stunning vocal clarity", "Full song generation"] },
+            { id: 32, name: "Suno AI", tagline: "Create complete radio-ready songs with lyrics and vocals from a simple text prompt.", category: "Audio & Voice", subCategory: "AI Music Generation", pricing: "Freemium", rating: 4.9, reviews: 5800, url: "https://suno.ai", icon: "🎵", badge: "Hit Songs", verified: true, platform: "Web App", features: ["Full lyric generation", "Any music genre supported", "High quality audio export", "Commercial ownership on Pro"] },
+            { id: 33, name: "ElevenLabs", tagline: "The most realistic AI voice generator and text-to-speech platform in the world.", category: "Audio & Voice", subCategory: "Text-to-Speech", pricing: "Freemium", rating: 5.0, reviews: 7100, url: "https://elevenlabs.io", icon: "🔊", badge: "Best Voice", verified: true, platform: "Web & API", features: ["Ultra-realistic voice cloning", "29+ languages supported", "Emotional inflection control", "Dubbing studio"] },
+            { id: 34, name: "Riffusion", tagline: "Generate real-time music and soundscapes from text prompts using spectrograms.", category: "Audio & Voice", subCategory: "AI Music Generation", pricing: "Free", rating: 4.6, reviews: 1100, url: "https://riffusion.com", icon: "📻", badge: "Realtime", verified: true, platform: "Web App", features: ["Continuous infinite music", "Custom style prompts", "Download MP3 tracks", "Free open web access"] },
+            { id: 35, name: "Murf.ai", tagline: "Versatile AI voiceover studio for videos, podcasts, and professional presentations.", category: "Audio & Voice", subCategory: "Text-to-Speech", pricing: "Freemium", rating: 4.7, reviews: 1900, url: "https://murf.ai", icon: "🎙️", badge: "Voiceover", verified: true, platform: "Web App", features: ["120+ text-to-speech voices", "Pitch and speed control", "Media timeline sync", "Team collaboration"] },
+            { id: 36, name: "Play.ht", tagline: "AI voice generator and audio article publisher for blogs and creators.", category: "Audio & Voice", subCategory: "Text-to-Speech", pricing: "Paid", rating: 4.7, reviews: 1400, url: "https://play.ht", icon: "🎧", badge: "Podcasts", verified: true, platform: "Web App", features: ["Ultra realistic voices", "Podcast RSS generation", "Custom pronunciations", "Embeddable audio players"] },
+            { id: 37, name: "LALAL.AI", tagline: "AI-powered vocal remover and stem splitter for clean music tracks.", category: "Audio & Voice", subCategory: "Voice Cloning", pricing: "Freemium", rating: 4.8, reviews: 2200, url: "https://lalal.ai", icon: "✂️", badge: "Stems", verified: true, platform: "Web App", features: ["Instrument and vocal separation", "Zero quality loss", "Fast processing", "API access"] },
+            { id: 38, name: "Voicemod", tagline: "Real-time AI voice changer and soundboard for gaming and streaming.", category: "Audio & Voice", subCategory: "Voice Changer", pricing: "Freemium", rating: 4.7, reviews: 3900, url: "https://voicemod.net", icon: "🎧", badge: "Gaming", verified: true, platform: "Desktop App", features: ["Real-time modulation", "Custom soundboard", "Discord & Twitch integration", "AI voice skins"] },
+            { id: 39, name: "Resemble AI", tagline: "Custom voice cloning and real-time audio synthesis for enterprise.", category: "Audio & Voice", subCategory: "Voice Cloning", pricing: "Paid", rating: 4.8, reviews: 1200, url: "https://resemble.ai", icon: "🛡️", badge: "Enterprise", verified: true, platform: "Web & API", features: ["Secure voice watermarking", "Cross-lingual cloning", "Local control options", "Developer APIs"] },
+            { id: 40, name: "Kits.ai", tagline: "AI voice library and toolkit specifically built for music producers and artists.", category: "Audio & Voice", subCategory: "Voice Cloning", pricing: "Freemium", rating: 4.8, reviews: 1600, url: "https://kits.ai", icon: "🎤", badge: "Artists", verified: true, platform: "Web App", features: ["Royalty-free voice models", "Clean vocal conversion", "Custom model training", "Instrument isolation"] },
+
+            // Text & Copywriting (41 to 50)
+            { id: 41, name: "Jasper AI", tagline: "Enterprise AI marketing copilot for copywriting, brand voice, and campaigns.", category: "Text & Copywriting", subCategory: "Long-form Writing", pricing: "Paid", rating: 4.7, reviews: 4800, url: "https://jasper.ai", icon: "✍️", badge: "Marketing", verified: true, platform: "Web App", features: ["Brand voice training", "SEO optimization mode", "Campaign workflows", "Browser extension"] },
+            { id: 42, name: "Copy.ai", tagline: "AI GTM and sales copywriting platform for high-performing go-to-market teams.", category: "Text & Copywriting", subCategory: "Long-form Writing", pricing: "Freemium", rating: 4.8, reviews: 3900, url: "https://copy.ai", icon: "📝", badge: "Sales AI", verified: true, platform: "Web App", features: ["Sales email sequences", "CRM enrichment", "Blog post writer", "Workflow automation"] },
+            { id: 43, name: "Writesonic", tagline: "AI writer, SEO optimizer, and chatbot builder for content marketers.", category: "Text & Copywriting", subCategory: "Long-form Writing", pricing: "Freemium", rating: 4.7, reviews: 2900, url: "https://writesonic.com", icon: "⚡", badge: "SEO Writer", verified: true, platform: "Web App", features: ["Article writer 5.0", "Landing page copy", "Fact-checked research", "WordPress sync"] },
+            { id: 44, name: "NotebookLM (Google)", tagline: "Personal AI research assistant trained securely on your own uploaded sources.", category: "Text & Copywriting", subCategory: "Summarizers", pricing: "Free", rating: 4.9, reviews: 3500, url: "https://notebooklm.google.com", icon: "📒", badge: "Google AI", verified: true, platform: "Web App", features: ["Generates audio podcast overviews", "Exact citations from notes", "Source-grounded answers", "Private data security"] },
+            { id: 45, name: "Kimi AI (Moonshot)", tagline: "AI assistant with an ultra-long context window capable of reading massive files for free.", category: "Text & Copywriting", subCategory: "Summarizers", pricing: "Free", rating: 4.8, reviews: 1800, url: "https://kimi.moonshot.cn", icon: "🌙", badge: "Free Long Context", verified: true, platform: "Web App", features: ["Process whole books & PDFs", "Web search integration", "Precise data extraction", "Completely free access"] },
+            { id: 46, name: "DuckDuckGo AI Chat", tagline: "Anonymous, privacy-first free chat with leading open-source AI models.", category: "Text & Copywriting", subCategory: "Chatbots & LLMs", pricing: "Free", rating: 4.8, reviews: 2100, url: "https://duckduckgo.com/chat", icon: "🦆", badge: "Private & Free", verified: true, platform: "Web App", features: ["Complete user privacy", "Zero data retention", "Switch between free models", "No account required"] },
+            { id: 47, name: "Rytr", tagline: "Affordable and fast AI writing assistant for emails, blogs, and social posts.", category: "Text & Copywriting", subCategory: "Long-form Writing", pricing: "Freemium", rating: 4.6, reviews: 3200, url: "https://rytr.me", icon: "✒️", badge: "Budget AI", verified: true, platform: "Web App", features: ["30+ languages supported", "Plagiarism checker", "Built-in copywriting formulas", "Chrome extension"] },
+            { id: 48, name: "Anyword", tagline: "Performance-driven AI copywriting platform that predicts ad conversion rates.", category: "Text & Copywriting", subCategory: "Long-form Writing", pricing: "Paid", rating: 4.7, reviews: 1400, url: "https://anyword.com", icon: "📊", badge: "Predictive", verified: true, platform: "Web App", features: ["Copy scoring analytics", "Audience persona targeting", "A/B testing generator", "Brand safety guardrails"] },
+            { id: 49, name: "QuillBot", tagline: "AI paraphrasing tool, grammar checker, and summarizer for students and writers.", category: "Text & Copywriting", subCategory: "Translation", pricing: "Freemium", rating: 4.8, reviews: 8100, url: "https://quillbot.com", icon: "📖", badge: "Paraphrase", verified: true, platform: "Web & Extension", features: ["Advanced paraphrasing modes", "Grammar checker", "Summarizer & citation generator", "Word counter"] },
+            { id: 50, name: "DeepL", tagline: "The world's most accurate AI translator for documents and text.", category: "Text & Copywriting", subCategory: "Translation", pricing: "Freemium", rating: 5.0, reviews: 9200, url: "https://deepl.com", icon: "🌐", badge: "Best Translator", verified: true, platform: "Web & Desktop", features: ["Unmatched nuance & translation quality", "Entire PDF/Word file translation", "Glossary controls", "Secure enterprise API"] },
+
+            // Productivity & Code (51 to 70)
+            { id: 51, name: "Blackbox AI", tagline: "Free AI code search, autocomplete, and chat for developers.", category: "Productivity & Code", subCategory: "Coding Assistants", pricing: "Free", rating: 4.7, reviews: 2500, url: "https://blackbox.ai", icon: "⬛", badge: "Free Dev Tool", verified: true, platform: "Web & Extension", features: ["Instant code generation", "Video to code conversion", "Real-time repository search", "VS Code extension"] },
+            { id: 52, name: "Windsurf IDE", tagline: "The pioneering agentic IDE with deep flow-state contextual multi-file awareness.", category: "Productivity & Code", subCategory: "Coding Assistants", pricing: "Freemium", rating: 4.8, reviews: 1800, url: "https://codeium.com/windsurf", icon: "🏄", badge: "Flow IDE", verified: true, platform: "Desktop App", features: ["Collaborative AI flows", "Predictive code edits", "Multi-file awareness", "Terminal integration"] },
+            { id: 53, name: "Replit Agent", tagline: "Autonomous software engineer agent that builds, tests, and deploys full apps.", category: "Productivity & Code", subCategory: "Workflow Automation", pricing: "Paid", rating: 4.8, reviews: 1300, url: "https://replit.com", icon: "🛠️", badge: "Autonomous", verified: true, platform: "Web App", features: ["Deploys apps instantly", "Self-debugging tests", "Collaborative workspace", "Integrated databases"] },
+            { id: 54, name: "GitHub Copilot", tagline: "Your AI pair programmer built into your favorite code editor.", category: "Productivity & Code", subCategory: "Coding Assistants", pricing: "Paid", rating: 4.9, reviews: 14500, url: "https://github.com/features/copilot", icon: "🐙", badge: "Standard", verified: true, platform: "IDE Extension", features: ["Real-time code completions", "Chat in editor", "Multi-language support", "Security vulnerability filtering"] },
+            { id: 55, name: "Groq Console", tagline: "Blazing fast LLM inference powered by custom LPU hardware with generous free tiers.", category: "Productivity & Code", subCategory: "Coding Assistants", pricing: "Free", rating: 4.9, reviews: 3400, url: "https://console.groq.com", icon: "⚡", badge: "Lightning Free", verified: true, platform: "Web & API", features: ["500+ tokens per second speed", "Llama 3 & Mixtral models", "Developer playground", "Generous free tier API"] },
+            { id: 56, name: "OpenWebUI", tagline: "Feature-rich, self-hosted AI interface for Ollama, OpenAI, and local LLMs.", category: "Productivity & Code", subCategory: "Coding Assistants", pricing: "Open-Source", rating: 4.9, reviews: 3900, url: "https://openwebui.com", icon: "🌐", badge: "Self-Hosted", verified: true, platform: "Docker / Web", features: ["Full markdown & LaTeX support", "RAG document search", "Role-based access control", "Voice integration"] },
+            { id: 57, name: "AnythingLLM", tagline: "All-in-one desktop application to turn any documents into a local RAG chatbot.", category: "Productivity & Code", subCategory: "PDF Analyzers", pricing: "Open-Source", rating: 4.8, reviews: 2200, url: "https://anythingllm.com", icon: "📚", badge: "RAG App", verified: true, platform: "Desktop & Web", features: ["Multi-user management", "Workspace document embedding", "Private local vectors", "Plug-and-play LLM backend"] },
+            { id: 58, name: "Napkin AI", tagline: "Turn dry text and notes into instant visual diagrams, flowcharts, and graphics.", category: "Productivity & Code", subCategory: "Workflow Automation", pricing: "Freemium", rating: 4.8, reviews: 1900, url: "https://napkin.ai", icon: "📊", badge: "Visuals", verified: true, platform: "Web App", features: ["Text to diagram generator", "Automatic infographics", "Customizable visuals", "Export to PDF/PNG"] },
+            { id: 59, name: "Excalidraw AI", tagline: "Virtual whiteboard with AI diagram generation and sketch-to-code capabilities.", category: "Productivity & Code", subCategory: "Workflow Automation", pricing: "Freemium", rating: 4.8, reviews: 3100, url: "https://excalidraw.com", icon: "✏️", badge: "Whiteboard", verified: true, platform: "Web App", features: ["Hand-drawn aesthetic", "AI wireframe generation", "Real-time collaboration", "Encrypted sharing"] },
+            { id: 60, name: "Eraser.io Diagrams", tagline: "Generate architecture diagrams, sequence charts, and cloud maps from text.", category: "Productivity & Code", subCategory: "Workflow Automation", pricing: "Freemium", rating: 4.8, reviews: 1600, url: "https://eraser.io", icon: "📐", badge: "Architecture", verified: true, platform: "Web App", features: ["DiagramGPT writer", "GitHub codebase diagrams", "Cloud infrastructure maps", "Team workspaces"] },
+            { id: 61, name: "Phind", tagline: "AI search engine built specifically for developers and technical problem solvers.", category: "Productivity & Code", subCategory: "Coding Assistants", pricing: "Freemium", rating: 4.8, reviews: 2900, url: "https://phind.com", icon: "💻", badge: "Dev Search", verified: true, platform: "Web App", features: ["Instant code answers", "Repository context search", "VS Code extension", "Up-to-date tech docs"] },
+            { id: 62, name: "Firecrawl", tagline: "Turn entire websites into clean markdown or structured data for AI apps.", category: "Productivity & Code", subCategory: "Workflow Automation", pricing: "Freemium", rating: 4.9, reviews: 2100, url: "https://firecrawl.dev", icon: "🔥", badge: "Crawl API", verified: true, platform: "API & Web", features: ["Deep site crawling", "Extracts tables & links", "Clean markdown format", "Python & JS SDKs"] },
+            { id: 63, name: "Vercel AI SDK", tagline: "Open-source library for building powerful conversational AI applications in React & Next.js.", category: "Productivity & Code", subCategory: "Coding Assistants", pricing: "Open-Source", rating: 4.9, reviews: 4900, url: "https://sdk.vercel.ai", icon: "▲", badge: "Framework", verified: true, platform: "NPM Package", features: ["Streams UI components", "Supports all major LLMs", "React hooks built-in", "Edge runtime ready"] },
+            { id: 64, name: "Supabase AI", tagline: "Database assistant to write SQL queries, check schemas, and secure data.", category: "Productivity & Code", subCategory: "Coding Assistants", pricing: "Freemium", rating: 4.8, reviews: 2600, url: "https://supabase.com", icon: "⚡", badge: "Database", verified: true, platform: "Web App", features: ["Natural language to SQL", "Vector embedding support", "Real-time subscriptions", "Auth & security policies"] },
+            { id: 65, name: "Neon Serverless Postgres", tagline: "Serverless Postgres with built-in pgvector support for AI applications.", category: "Productivity & Code", subCategory: "Coding Assistants", pricing: "Freemium", rating: 4.9, reviews: 2400, url: "https://neon.tech", icon: "🟢", badge: "Postgres", verified: true, platform: "Cloud DB", features: ["Instant branching", "Serverless scaling", "Vector search ready", "Generous free tier"] },
+            { id: 66, name: "Obsidian Copilot", tagline: "Local AI plugin for Obsidian to chat, summarize, and query your markdown vault.", category: "Productivity & Code", subCategory: "Note Takers", pricing: "Free", rating: 4.8, reviews: 1800, url: "https://obsidian.md", icon: "📓", badge: "Vault AI", verified: true, platform: "Desktop Plugin", features: ["Local vector search", "Note synthesis", "Zero data leaves vault", "Custom LLM backends"] },
+            { id: 67, name: "Khoj AI", tagline: "Your open-source personal AI assistant for searching notes, docs, and the web.", category: "Productivity & Code", subCategory: "Note Takers", pricing: "Freemium", rating: 4.7, reviews: 1300, url: "https://khoj.dev", icon: "👓", badge: "Personal", verified: true, platform: "Web & App", features: ["Syncs with Obsidian & Notion", "Local file search", "WhatsApp bot integration", "Open source flexibility"] },
+            { id: 68, name: "Jina AI Reader", tagline: "Convert any URL or webpage into clean LLM-ready markdown instantly.", category: "Productivity & Code", subCategory: "Workflow Automation", pricing: "Free", rating: 4.8, reviews: 1600, url: "https://jina.ai", icon: "📖", badge: "Reader API", verified: true, platform: "Web & API", features: ["URL to Markdown in seconds", "Bypasses paywalls & clutter", "Free developer API tier", "Perfect for RAG ingestion"] },
+            { id: 69, name: "LlamaCoder (Together AI)", tagline: "Instant open-source full-stack app generator powered by Llama 3.", category: "Productivity & Code", subCategory: "Coding Assistants", pricing: "Free", rating: 4.8, reviews: 1500, url: "https://llamacoder.together.ai", icon: "🦙", badge: "Open Source", verified: true, platform: "Web App", features: ["Llama 3 powered coding", "Tailwind components", "Live preview sandbox", "Instant export code"] },
+            { id: 70, name: "Bolt.new Community Hub", tagline: "Explore thousands of community-built full-stack apps and templates.", category: "Productivity & Code", subCategory: "Workflow Automation", pricing: "Free", rating: 4.9, reviews: 2100, url: "https://stackblitz.com", icon: "🌟", badge: "Templates", verified: true, platform: "Web App", features: ["Pre-built templates", "Community remixes", "Instant container spin-up", "Open sharing"] },
+
+            // Marketing & Social (71 to 80)
+            { id: 71, name: "Resend", tagline: "Developer-first email API platform with AI email drafting capabilities.", category: "Marketing & Social", subCategory: "Email Marketing", pricing: "Freemium", rating: 4.9, reviews: 1900, url: "https://resend.com", icon: "✉️", badge: "Email API", verified: true, platform: "Web & API", features: ["React email support", "High deliverability", "Clean dashboard", "Instant API keys"] },
+            { id: 72, name: "Hootsuite OwlyWriter AI", tagline: "Social media caption and post generator built into Hootsuite.", category: "Marketing & Social", subCategory: "Social Media Schedulers", pricing: "Paid", rating: 4.7, reviews: 2200, url: "https://hootsuite.com", icon: "🦉", badge: "Social", verified: true, platform: "Web App", features: ["Instant caption generation", "Repurpose blog posts", "Hashtag suggestions", "Content calendar"] },
+            { id: 73, name: "Buffer AI Assistant", tagline: "Generate, rewrite, and brainstorm social media posts across platforms.", category: "Marketing & Social", subCategory: "Social Media Schedulers", pricing: "Freemium", rating: 4.8, reviews: 1800, url: "https://buffer.com", icon: "📊", badge: "Scheduler", verified: true, platform: "Web App", features: ["Tone adjustment", "Idea brainstorming", "Multi-platform formatting", "Easy scheduling"] },
+            { id: 74, name: "Ocoya", tagline: "AI content creation, copywriting, and social media scheduling platform.", category: "Marketing & Social", subCategory: "Social Media Schedulers", pricing: "Paid", rating: 4.7, reviews: 1100, url: "https://ocoya.com", icon: "🚀", badge: "Growth", verified: true, platform: "Web App", features: ["Trafftix AI writer", "Canva integration", "Product tagging", "Analytics dashboard"] },
+            { id: 75, name: "Predis.ai", tagline: "AI social media ad maker that generates videos, carousels, and captions.", category: "Marketing & Social", subCategory: "Ad Copy Generators", pricing: "Freemium", rating: 4.8, reviews: 1400, url: "https://predis.ai", icon: "🎯", badge: "Ads", verified: true, platform: "Web App", features: ["Text to social post video", "Competitor ad analysis", "E-commerce creatives", "Hashtag intelligence"] },
+            { id: 76, name: "AdCreative.ai", tagline: "Generate high-converting ad creatives and banners powered by conversion AI.", category: "Marketing & Social", subCategory: "Ad Copy Generators", pricing: "Paid", rating: 4.8, reviews: 1950, url: "https://adcreative.ai", icon: "💡", badge: "Conversions", verified: true, platform: "Web App", features: ["Data-backed ad designs", "Platform size adaptation", "Text generation included", "Seamless ad account sync"] },
+            { id: 77, name: "Surfer SEO", tagline: "AI-driven content strategy and SEO optimization tool to rank #1 on Google.", category: "Marketing & Social", subCategory: "SEO Audit", pricing: "Paid", rating: 4.9, reviews: 3100, url: "https://surferseo.com", icon: "📈", badge: "SEO Pro", verified: true, platform: "Web App", features: ["Content score guidance", "Keyword research tool", "Audit existing pages", "NLP terms analysis"] },
+            { id: 78, name: "MarketMuse", tagline: "AI content intelligence and SEO strategy platform for enterprise content teams.", category: "Marketing & Social", subCategory: "SEO Audit", pricing: "Paid", rating: 4.7, reviews: 980, url: "https://marketmuse.com", icon: "📉", badge: "Enterprise", verified: true, platform: "Web App", features: ["Topic authority mapping", "Content briefs generator", "Inventory auditing", "Personalized difficulty scores"] },
+            { id: 79, name: "GetResponse AI", tagline: "Email marketing platform with built-in AI email generator and landing page builder.", category: "Marketing & Social", subCategory: "Email Marketing", pricing: "Freemium", rating: 4.8, reviews: 2400, url: "https://getresponse.com", icon: "📬", badge: "Email Pro", verified: true, platform: "Web App", features: ["AI subject line generator", "Newsletter builder", "Autoresponders", "Conversion funnels"] },
+            { id: 80, name: "HubSpot AI Content Hub", tagline: "AI-powered marketing content creation and CRM assistant by HubSpot.", category: "Marketing & Social", subCategory: "Email Marketing", pricing: "Freemium", rating: 4.9, reviews: 4100, url: "https://hubspot.com", icon: "🧡", badge: "HubSpot", verified: true, platform: "Web App", features: ["CRM data integration", "Multi-channel marketing", "Blog post generator", "Email personalization"] },
+
+            // Specialized & Agents (81 to 105)
+            { id: 81, name: "Ollama", tagline: "Run large language models locally on your Mac, Windows, or Linux machine.", category: "Specialized & Agents", subCategory: "Research & Data", pricing: "Open-Source", rating: 4.9, reviews: 7100, url: "https://ollama.com", icon: "🦙", badge: "Local AI", verified: true, platform: "Desktop App", features: ["Run Llama, Mistral & Gemma offline", "Zero privacy risk", "Command line ease", "API endpoint support"] },
+            { id: 82, name: "LM Studio", tagline: "Discover, download, and run local LLMs with a gorgeous desktop interface.", category: "Specialized & Agents", subCategory: "Research & Data", pricing: "Free", rating: 4.9, reviews: 4800, url: "https://lmstudio.ai", icon: "🖥️", badge: "Local App", verified: true, platform: "Desktop App", features: ["Hugging Face model search", "Local chat server OpenAI compatible", "GPU acceleration", "Hardware safety controls"] },
+            { id: 83, name: "Dify.ai", tagline: "Open-source LLM app development platform for building agents and workflows.", category: "Specialized & Agents", subCategory: "AI Agents", pricing: "Open-Source", rating: 4.9, reviews: 2500, url: "https://dify.ai", icon: "⚙️", badge: "Workflow", verified: true, platform: "Web & API", features: ["Visual workflow builder", "RAG pipeline management", "Agent capability mapping", "Enterprise monitoring"] },
+            { id: 84, name: "Flowise", tagline: "Open-source drag-and-drop UI builder for LLM orchestration and agents.", category: "Specialized & Agents", subCategory: "AI Agents", pricing: "Open-Source", rating: 4.8, reviews: 2100, url: "https://flowiseai.com", icon: "🧩", badge: "Drag & Drop", verified: true, platform: "Desktop & Web", features: ["LangChain integration", "Custom node creators", "REST API generation", "Chat widget embedding"] },
+            { id: 85, name: "Langflow", tagline: "Visual framework for building multi-agent AI applications and RAG systems.", category: "Specialized & Agents", subCategory: "AI Agents", pricing: "Open-Source", rating: 4.8, reviews: 1900, url: "https://langflow.org", icon: "🔗", badge: "Visual AI", verified: true, platform: "Web App", features: ["Interactive graph playground", "Python component integration", "Real-time debugging", "Export to python script"] },
+            { id: 86, name: "CrewAI", tagline: "Framework for orchestrating role-playing autonomous AI agents to solve complex tasks.", category: "Specialized & Agents", subCategory: "AI Agents", pricing: "Open-Source", rating: 4.9, reviews: 3800, url: "https://crewai.com", icon: "🚢", badge: "Multi-Agent", verified: true, platform: "Python & Web", features: ["Collaborative agent crews", "Task delegation protocols", "Memory & tool usage", "Enterprise ready"] },
+            { id: 87, name: "Exa AI", tagline: "Neural search engine built specifically to feed high-quality data to LLMs.", category: "Specialized & Agents", subCategory: "Research & Data", pricing: "Freemium", rating: 4.9, reviews: 1500, url: "https://exa.ai", icon: "🌐", badge: "API Search", verified: true, platform: "API & Web", features: ["Semantic web crawling", "Clean structured outputs", "High precision developer API", "Fast retrieval"] },
+            { id: 88, name: "Tavily AI", tagline: "Optimized search engine API built specifically for autonomous AI agents.", category: "Specialized & Agents", subCategory: "AI Agents", pricing: "Freemium", rating: 4.8, reviews: 1200, url: "https://tavily.com", icon: "🎯", badge: "Agent Search", verified: true, platform: "API", features: ["Zero noise search results", "Fact extraction built-in", "Agent ready responses", "High speed throughput"] },
+            { id: 89, name: "Scrapfly", tagline: "Advanced web scraping and anti-scraping bypass API for AI agents.", category: "Specialized & Agents", subCategory: "Research & Data", pricing: "Freemium", rating: 4.7, reviews: 1100, url: "https://scrapfly.io", icon: "🕷️", badge: "Scraper", verified: true, platform: "API", features: ["Cloud browser rendering", "Proxy rotation", "JavaScript rendering", "Extraction templates"] },
+            { id: 90, name: "Pinecone", tagline: "Managed vector database designed for high-performance AI similarity search.", category: "Specialized & Agents", subCategory: "Research & Data", pricing: "Freemium", rating: 4.8, reviews: 3400, url: "https://pinecone.io", icon: "🌲", badge: "Vector DB", verified: true, platform: "Cloud DB", features: ["Billions of vectors scale", "Low latency search", "Serverless indexes", "Easy SDK integration"] },
+            { id: 91, name: "Qdrant", tagline: "Vector database and semantic search engine with extended payload filtering.", category: "Specialized & Agents", subCategory: "Research & Data", pricing: "Open-Source", rating: 4.8, reviews: 1800, url: "https://qdrant.tech", icon: "🐝", badge: "Open Source", verified: true, platform: "Cloud & Local", features: ["Rust performance", "Advanced payload filtering", "Cloud managed tier", "Open source code"] },
+            { id: 92, name: "Chroma", tagline: "The AI-native open-source vector database for Python and JavaScript.", category: "Specialized & Agents", subCategory: "Research & Data", pricing: "Open-Source", rating: 4.8, reviews: 2300, url: "https://trychroma.com", icon: "🧪", badge: "Lightweight", verified: true, platform: "Library", features: ["In-memory or persistent", "Simple client API", "Embedding functions included", "Zero setup overhead"] },
+            { id: 93, name: "Milvus", tagline: "Cloud-native vector database built for scalable similarity search and AI apps.", category: "Specialized & Agents", subCategory: "Research & Data", pricing: "Open-Source", rating: 4.8, reviews: 2000, url: "https://milvus.io", icon: "🐘", badge: "Massive Scale", verified: true, platform: "Cloud & Local", features: ["Handles multi-billion vector datasets", "Heterogeneous hardware acceleration", "Cloud-native architecture", "Enterprise security"] },
+            { id: 94, name: "Civitai", tagline: "Open hub for Stable Diffusion AI art models, embeddings, and LoRAs.", category: "Specialized & Agents", subCategory: "Research & Data", pricing: "Free", rating: 4.9, reviews: 6100, url: "https://civitai.com", icon: "🤝", badge: "Community Hub", verified: true, platform: "Web App", features: ["Thousands of custom AI models", "Safe model verification", "Prompt sharing community", "Free download access"] },
+            { id: 95, name: "Character.ai", tagline: "Chat with customizable AI personalities, anime characters, and historical figures.", category: "Specialized & Agents", subCategory: "Gaming", pricing: "Freemium", rating: 4.8, reviews: 11200, url: "https://character.ai", icon: "🎭", badge: "Personas", verified: true, platform: "Web & Mobile", features: ["Create custom AI characters", "Group chats with multiple bots", "Voice calls with characters", "Immersive roleplay"] },
+            { id: 96, name: "Inworld AI", tagline: "Advanced AI character engine for games, virtual worlds, and interactive media.", category: "Specialized & Agents", subCategory: "Gaming", pricing: "Freemium", rating: 4.8, reviews: 1400, url: "https://inworld.ai", icon: "🎮", badge: "Game AI", verified: true, platform: "Web & SDK", features: ["Advanced NPC memory & goals", "Unity & Unreal Engine SDKs", "Real-time dialogue generation", "Emotional intelligence"] },
+            { id: 97, name: "Lumen5", tagline: "Transform blog posts and text documents into engaging marketing videos automatically.", category: "Specialized & Agents", subCategory: "Research & Data", pricing: "Freemium", rating: 4.7, reviews: 2900, url: "https://lumen5.com", icon: "📹", badge: "Video Maker", verified: true, platform: "Web App", features: ["AI script to storyboard", "Stock media library", "Brand kit customization", "Instant rendering"] },
+            { id: 98, name: "Mendable", tagline: "AI chat assistant that answers customer and developer questions using your documentation.", category: "Specialized & Agents", subCategory: "Research & Data", pricing: "Paid", rating: 4.8, reviews: 1100, url: "https://mendable.ai", icon: "💬", badge: "Docs Chat", verified: true, platform: "Web App", features: ["Instant doc indexing", "Embeddable widget", "Slack bot integration", "Accurate source citations"] },
+            { id: 99, name: "Vapi AI", tagline: "Developer platform to build and run lightning-fast voice AI agents and phone bots.", category: "Specialized & Agents", subCategory: "AI Agents", pricing: "Freemium", rating: 4.9, reviews: 1650, url: "https://vapi.ai", icon: "📞", badge: "Voice Agents", verified: true, platform: "API & Web", features: ["Sub-second latency voice calls", "Custom telephony integration", "Function calling support", "Developer SDKs"] },
+            { id: 100, name: "Retell AI", tagline: "Infrastructure and API for building conversational voice agents with human-like latency.", category: "Specialized & Agents", subCategory: "AI Agents", pricing: "Freemium", rating: 4.9, reviews: 1400, url: "https://retellai.com", icon: "☎️", badge: "Telephony", verified: true, platform: "API & Web", features: ["Low latency conversational audio", "Call analytics & logs", "Custom LLM connection", "Easy phone number provisioning"] },
+            { id: 101, name: "Voiceflow", tagline: "Collaborative platform for designing, building, and launching advanced conversational AI agents.", category: "Specialized & Agents", subCategory: "AI Agents", pricing: "Freemium", rating: 4.9, reviews: 3200, url: "https://voiceflow.com", icon: "💬", badge: "Agent Builder", verified: true, platform: "Web App", features: ["Visual dialog canvas", "NLU and LLM orchestration", "Omnichannel deployment", "Analytics and transcripts"] },
+            { id: 102, name: "Make.com AI Modules", tagline: "Visual workflow automation platform featuring powerful native OpenAI and Anthropic modules.", category: "Specialized & Agents", subCategory: "AI Agents", pricing: "Freemium", rating: 4.9, reviews: 5400, url: "https://make.com", icon: "🔄", badge: "Automation", verified: true, platform: "Web App", features: ["Connect 1000+ apps with AI", "Visual scenario builder", "Advanced error handling", "Scheduled executions"] },
+            { id: 103, name: "Zapier Central", tagline: "Build experimental AI assistant bots that take actions across 6,000+ business apps.", category: "Specialized & Agents", subCategory: "AI Agents", pricing: "Freemium", rating: 4.8, reviews: 4200, url: "https://zapier.com", icon: "⚡", badge: "Action AI", verified: true, platform: "Web App", features: ["Autonomous app actions", "Natural language instructions", "Secure credential handling", "Instant team sharing"] },
+            { id: 104, name: "Peris.ai", tagline: "Autonomous security agent monitoring vulnerabilities and code safety for apps.", category: "Specialized & Agents", subCategory: "Research & Data", pricing: "Paid", rating: 4.8, reviews: 920, url: "https://peris.ai", icon: "🛡️", badge: "Security", verified: true, platform: "Web App", features: ["Automated penetration testing", "Code vulnerability scanning", "Real-time threat alerts", "Compliance reporting"] },
+            { id: 105, name: "AgentGPT", tagline: "Assemble, configure, and deploy autonomous AI agents directly in your web browser.", category: "Specialized & Agents", subCategory: "AI Agents", pricing: "Open-Source", rating: 4.8, reviews: 3100, url: "https://agentgpt.reworkd.ai", icon: "🤖", badge: "Browser Agent", verified: true, platform: "Web App", features: ["Goal decomposition", "Autonomous web browsing", "Step-by-step task execution", "Open source core"] }
+        ];
+
+        let tools = JSON.parse(localStorage.getItem('allaitools_massive_100plus_v3')) || defaultTools;
+        let bookmarks = JSON.parse(localStorage.getItem('allaitools_massive_100plus_bookmarks_v3')) || [];
+        let selectedCategory = 'All';
+        let selectedSubCategory = 'All';
+        let selectedPricing = 'All';
+        let searchQuery = '';
+        let showOnlyBookmarks = false;
+
+        const categories = ['All', 'Video & Animation', 'Images & Art', 'Audio & Voice', 'Text & Copywriting', 'Productivity & Code', 'Marketing & Social', 'Specialized & Agents'];
+
+        const subCategoriesMap = {
+            'All': ['All'],
+            'Video & Animation': ['All', 'Text-to-Video', 'Image-to-Video', 'Avatar Generation', 'Video Editing', 'Upscaling'],
+            'Images & Art': ['All', 'Text-to-Image', '3D Rendering', 'Background Remover', 'Inpainting'],
+            'Audio & Voice': ['All', 'Voice Cloning', 'AI Music Generation', 'Text-to-Speech', 'Voice Changer'],
+            'Text & Copywriting': ['All', 'Chatbots & LLMs', 'Long-form Writing', 'Summarizers', 'Translation'],
+            'Productivity & Code': ['All', 'Coding Assistants', 'Workflow Automation', 'Note Takers', 'Meeting Schedulers', 'PDF Analyzers'],
+            'Marketing & Social': ['All', 'Social Media Schedulers', 'Ad Copy Generators', 'Email Marketing', 'SEO Audit'],
+            'Specialized & Agents': ['All', 'AI Agents', 'Research & Data', 'Meme Generators', 'Gaming', 'Ethics & Watermarking']
+        };
+
+        window.onload = function() {
+            renderCategories();
+            renderSubCategories();
+            renderTools();
+            updateBookmarkBadge();
+        };
+
+        function renderCategories() {
+            const container = document.getElementById('categoryPills');
+            container.innerHTML = categories.map(cat => `
+                <button onclick="setCategory('${cat}')" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition flex items-center space-x-2 ${selectedCategory === cat ? 'bg-purple-600 text-white shadow-neon' : 'bg-darkCard border border-darkBorder text-zinc-400 hover:text-white hover:border-zinc-700'}">
+                    <span>${cat}</span>
+                </button>
+            `).join('');
+        }
+
+        function renderSubCategories() {
+            const container = document.getElementById('subCategoryPills');
+            const subs = subCategoriesMap[selectedCategory] || ['All'];
+            container.innerHTML = subs.map(sub => `
+                <button onclick="setSubCategory('${sub}')" class="px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition ${selectedSubCategory === sub ? 'bg-indigo-600 text-white shadow-sm' : 'bg-darkCard/60 border border-darkBorder text-zinc-400 hover:text-white'}">
+                    ${sub}
+                </button>
+            `).join('');
+        }
+
+        function setCategory(category) {
+            selectedCategory = category;
+            selectedSubCategory = 'All';
+            showOnlyBookmarks = false;
+            document.getElementById('bookmarkNavBtn').classList.remove('border-purple-500', 'text-purple-400');
+            renderCategories();
+            renderSubCategories();
+            renderTools();
+        }
+
+        function setSubCategory(sub) {
+            selectedSubCategory = sub;
+            renderSubCategories();
+            renderTools();
+        }
+
+        function setPricingFilter(pricing) {
+            selectedPricing = pricing;
+            document.querySelectorAll('.filter-pricing').forEach(btn => {
+                if(btn.dataset.pricing === pricing) {
+                    btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-600 text-white transition filter-pricing active shadow-sm";
+                } else {
+                    btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-darkCard border border-darkBorder text-zinc-400 hover:text-white transition filter-pricing";
+                }
+            });
+            renderTools();
+        }
+
+        function handleSearch() {
+            searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+            renderTools();
+        }
+
+        function quickSearch(keyword) {
+            document.getElementById('searchInput').value = keyword;
+            searchQuery = keyword.toLowerCase();
+            renderTools();
+        }
+
+        function toggleBookmarksFilter() {
+            showOnlyBookmarks = !showOnlyBookmarks;
+            const btn = document.getElementById('bookmarkNavBtn');
+            if(showOnlyBookmarks) {
+                btn.classList.add('border-purple-500', 'text-purple-400', 'bg-purple-500/10');
+            } else {
+                btn.classList.remove('border-purple-500', 'text-purple-400', 'bg-purple-500/10');
+            }
+            renderTools();
+        }
+
+        function toggleBookmark(id, event) {
+            event.stopPropagation();
+            const index = bookmarks.indexOf(id);
+            if(index > -1) {
+                bookmarks.splice(index, 1);
+                showToast("Bookmark Removed", "Tool removed from your saved list.", "fa-bookmark");
+            } else {
+                bookmarks.push(id);
+                showToast("Tool Saved!", "Tool successfully added to your bookmarks.", "fa-bookmark");
+            }
+            localStorage.setItem('allaitools_massive_100plus_bookmarks_v3', JSON.stringify(bookmarks));
+            updateBookmarkBadge();
+            renderTools();
+        }
+
+        function updateBookmarkBadge() {
+            const badge = document.getElementById('bookmarkCountBadge');
+            if(bookmarks.length > 0) {
+                badge.textContent = bookmarks.length;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+
+        function renderTools() {
+            const grid = document.getElementById('toolsGrid');
+            const emptyState = document.getElementById('emptyState');
+            const resultCount = document.getElementById('resultCount');
+            const sortBy = document.getElementById('sortBy').value;
+
+            let filtered = tools.filter(tool => {
+                const matchesCategory = selectedCategory === 'All' || tool.category === selectedCategory;
+                const matchesSubCategory = selectedSubCategory === 'All' || (tool.subCategory && tool.subCategory === selectedSubCategory);
+                const matchesPricing = selectedPricing === 'All' || tool.pricing === selectedPricing;
+                
+                const matchesSearch = (tool.name && tool.name.toLowerCase().includes(searchQuery)) || 
+                                      (tool.tagline && tool.tagline.toLowerCase().includes(searchQuery)) ||
+                                      (tool.category && tool.category.toLowerCase().includes(searchQuery)) ||
+                                      (tool.subCategory && tool.subCategory.toLowerCase().includes(searchQuery));
+                
+                const matchesBookmark = !showOnlyBookmarks || bookmarks.includes(tool.id);
+
+                return matchesCategory && matchesSubCategory && matchesPricing && matchesSearch && matchesBookmark;
+            });
+
+            if(sortBy === 'popular') {
+                filtered.sort((a, b) => b.reviews - a.reviews);
+            } else if(sortBy === 'rating') {
+                filtered.sort((a, b) => b.rating - a.rating);
+            } else if(sortBy === 'newest') {
+                filtered.sort((a, b) => b.id - a.id);
+            }
+
+            resultCount.textContent = `${filtered.length} tools`;
+
+            if(filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            grid.innerHTML = filtered.map(tool => {
+                const isBookmarked = bookmarks.includes(tool.id);
+                return `
+                    <div onclick="openToolModal(${tool.id})" class="glass-panel p-5 rounded-2xl hover:border-purple-500/50 transition cursor-pointer group flex flex-col justify-between relative shadow-xl hover:shadow-neon">
+                        <div class="absolute top-4 right-4 flex items-center space-x-2">
+                            <button onclick="toggleBookmark(${tool.id}, event)" class="w-8 h-8 rounded-xl bg-darkBg border border-darkBorder flex items-center justify-center text-zinc-400 hover:text-purple-400 transition" title="Bookmark">
+                                <i class="fa-${isBookmarked ? 'solid' : 'regular'} fa-bookmark text-xs ${isBookmarked ? 'text-purple-400' : ''}"></i>
+                            </button>
+                        </div>
+
+                        <div>
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-darkBg to-darkBorder border border-darkBorder flex items-center justify-center text-2xl shadow-inner group-hover:scale-105 transition">
+                                    ${tool.icon || '🤖'}
+                                </div>
+                                <div>
+                                    <div class="flex items-center space-x-1.5">
+                                        <h3 class="text-base font-bold text-white group-hover:text-purple-400 transition">${tool.name}</h3>
+                                        ${tool.verified ? '<i class="fa-solid fa-circle-check text-purple-400 text-xs" title="Verified AI"></i>' : ''}
+                                    </div>
+                                    <span class="text-[10px] px-2 py-0.5 rounded-md bg-purple-500/10 text-purple-300 border border-purple-500/20 font-medium inline-block mt-0.5">${tool.badge || tool.category}</span>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed mb-4">${tool.tagline}</p>
+                        </div>
+
+                        <div>
+                            <div class="flex items-center justify-between pt-4 border-t border-darkBorder/60 text-xs">
+                                <div class="flex items-center space-x-1.5 text-zinc-400">
+                                    <span class="px-2 py-0.5 rounded-lg bg-darkBg border border-darkBorder font-semibold text-[10px] text-zinc-300">${tool.pricing}</span>
+                                    <span class="flex items-center text-amber-400"><i class="fa-solid fa-star text-[10px] mr-1"></i>${tool.rating}</span>
+                                </div>
+                                <a href="${tool.url}" target="_blank" onclick="event.stopPropagation()" class="px-3.5 py-1.5 rounded-xl bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white font-semibold transition text-xs flex items-center space-x-1.5 border border-purple-500/30">
+                                    <span>Visit</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function openToolModal(id) {
+            const tool = tools.find(t => t.id === id);
+            if(!tool) return;
+
+            const modal = document.getElementById('toolModal');
+            const content = document.getElementById('modalContent');
+            const isBookmarked = bookmarks.includes(tool.id);
+
+            content.innerHTML = `
+                <div class="p-6 sm:p-8 space-y-6">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-darkBg to-darkBorder border border-darkBorder flex items-center justify-center text-3xl shadow-xl">
+                                ${tool.icon || '🤖'}
+                            </div>
+                            <div>
+                                <div class="flex items-center space-x-2">
+                                    <h2 class="text-xl sm:text-2xl font-bold text-white">${tool.name}</h2>
+                                    ${tool.verified ? '<i class="fa-solid fa-circle-check text-purple-400 text-sm" title="Verified"></i>' : ''}
+                                </div>
+                                <p class="text-xs text-purple-400 font-medium mt-0.5">${tool.category} &bull; ${tool.subCategory || 'General'}</p>
+                            </div>
+                        </div>
+                        <button onclick="closeToolModal()" class="text-zinc-400 hover:text-white p-2.5 rounded-xl bg-darkBg border border-darkBorder">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <p class="text-sm text-zinc-300 leading-relaxed">${tool.tagline}</p>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <div class="p-3 rounded-xl bg-darkBg border border-darkBorder">
+                            <span class="block text-[10px] text-zinc-500 uppercase font-bold">Pricing Model</span>
+                            <span class="text-xs font-bold text-white mt-0.5 block">${tool.pricing}</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-darkBg border border-darkBorder">
+                            <span class="block text-[10px] text-zinc-500 uppercase font-bold">User Rating</span>
+                            <span class="text-xs font-bold text-amber-400 mt-0.5 block flex items-center"><i class="fa-solid fa-star mr-1"></i>${tool.rating} / 5.0 (${tool.reviews} reviews)</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-darkBg border border-darkBorder col-span-2 sm:col-span-1">
+                            <span class="block text-[10px] text-zinc-500 uppercase font-bold">Platform</span>
+                            <span class="text-xs font-bold text-white mt-0.5 block">${tool.platform || 'Web App'}</span>
+                        </div>
+                    </div>
+
+                    ${tool.features && tool.features.length > 0 ? `
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-3">Key Capabilities & Features</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                ${tool.features.map(f => `
+                                    <div class="flex items-center space-x-2 p-2.5 rounded-xl bg-darkBg border border-darkBorder text-xs text-zinc-300">
+                                        <i class="fa-solid fa-check text-purple-400"></i>
+                                        <span>${f}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <div class="flex items-center space-x-3 pt-4 border-t border-darkBorder">
+                        <button onclick="toggleBookmark(${tool.id}, event)" class="flex-1 py-3 rounded-xl bg-darkBg border border-darkBorder hover:border-purple-500 text-zinc-300 font-semibold text-xs transition flex items-center justify-center space-x-2">
+                            <i class="fa-${isBookmarked ? 'solid' : 'regular'} fa-bookmark ${isBookmarked ? 'text-purple-400' : ''}"></i>
+                            <span>${isBookmarked ? 'Bookmarked' : 'Save Tool'}</span>
+                        </button>
+                        <a href="${tool.url}" target="_blank" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold text-xs transition shadow-neon flex items-center justify-center space-x-2">
+                            <span>Launch Official Website</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeToolModal() {
+            const modal = document.getElementById('toolModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        function openSubmitModal() {
+            const modal = document.getElementById('submitModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeSubmitModal() {
+            const modal = document.getElementById('submitModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        function handleToolSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('subName').value;
+            const category = document.getElementById('subCategory').value;
+            const pricing = document.getElementById('subPricing').value;
+            const url = document.getElementById('subUrl').value;
+            const tagline = document.getElementById('subDesc').value;
+            const icon = document.getElementById('subIcon').value || '🤖';
+
+            const newTool = {
+                id: Date.now(),
+                name,
+                category,
+                subCategory: 'General',
+                pricing,
+                url,
+                tagline,
+                icon,
+                rating: 5.0,
+                reviews: 1,
+                badge: 'Community',
+                verified: false,
+                platform: 'Web App',
+                features: ['User submitted tool', 'Quick access link']
+            };
+
+            tools.unshift(newTool);
+            localStorage.setItem('allaitools_massive_100plus_v3', JSON.stringify(tools));
+            closeSubmitModal();
+            document.getElementById('submitForm').reset();
+            renderTools();
+            showToast("Tool Submitted!", "Your AI tool has been successfully added to the directory.", "fa-circle-check");
+        }
+
+        function openSponsorModal() {
+            const modal = document.getElementById('sponsorModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeSponsorModal() {
+            const modal = document.getElementById('sponsorModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+
+        function handleSponsorInquiry() {
+            closeSponsorModal();
+            showToast("Inquiry Received!", "Our partnership team will reach out to you within 24 hours.", "fa-paper-plane");
+        }
+
+        function resetFilters() {
+            selectedCategory = 'All';
+            selectedSubCategory = 'All';
+            selectedPricing = 'All';
+            searchQuery = '';
+            showOnlyBookmarks = false;
+            document.getElementById('searchInput').value = '';
+            setPricingFilter('All');
+            renderCategories();
+            renderSubCategories();
+            renderTools();
+        }
+
+        function showToast(title, msg, iconClass) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastMsg').textContent = msg;
+            document.getElementById('toastIcon').innerHTML = `<i class="fa-solid ${iconClass}"></i>`;
+            
+            toast.classList.remove('translate-y-28', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-28', 'opacity-0');
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
